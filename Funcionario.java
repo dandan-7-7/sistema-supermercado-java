@@ -1,3 +1,5 @@
+
+
 public class Funcionario extends Pessoa implements Autenticavel {
 
     public Funcionario(String nome, String cpf, boolean confirmaGestor){ 

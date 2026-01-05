@@ -1,24 +1,31 @@
 import java.util.ArrayList;
 
 public class SupermercadoController {
+    ArqProduto arqProduto = new ArqProduto();
+    ArqCliente arqCliente = new ArqCliente();
+    ArqFuncionario arqFuncionario = new ArqFuncionario();
+
     private ArrayList<Funcionario> funcionarios;
     private ArrayList<Produto> produtos;
     private ArrayList<Cliente> clientes;
 
     public SupermercadoController() {
-        this.funcionarios = new ArrayList<>();
-        this.produtos = new ArrayList<>();
-        this.clientes = new ArrayList<>();
+        this.funcionarios = arqFuncionario.listar();
+        this.produtos = arqProduto.listar();
+        this.clientes = arqCliente.listar();
     }
 
     public void cadastrarProduto(Produto produto) {
         produtos.add(produto);
+        arqProduto.salvar(produto);
     }
-    public void cadastrarCliente(Cliente produto) {
-        clientes.add(produto);
+    public void cadastrarCliente(Cliente cliente) {
+        clientes.add(cliente);
+        arqCliente.salvar(cliente);
     }
      public void cadastrarFucionario(Funcionario funcionario) {
         funcionarios.add(funcionario);
+        arqFuncionario.salvar(funcionario);
     }
     public ArrayList<Produto> listarProdutos() {
         return produtos;
@@ -61,7 +68,7 @@ public class SupermercadoController {
             return false;
            
     }
-    public boolean editarFuncionaario(String nomeAntigo, String novoNome, String novoCPF) {
+    public boolean editarFuncionario(String nomeAntigo, String novoNome, String novoCPF) {
     for (Funcionario f: funcionarios) {
         if (f.getNome().equalsIgnoreCase(nomeAntigo)) {
             f.setNome(novoNome);
