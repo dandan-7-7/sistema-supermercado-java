@@ -2,7 +2,7 @@
 
 public class Funcionario extends Pessoa implements Autenticavel {
 
-    public Funcionario(String nome, String cpf, boolean confirmaGestor){ 
+    public Funcionario(String nome, String cpf){ 
         super(nome, cpf, true);   
     }
     @Override

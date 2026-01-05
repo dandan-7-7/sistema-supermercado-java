@@ -66,4 +66,8 @@ public class Produto implements Serializable {
 	public double calcularValorTotalEmEstoque(){
 		return quantidade * preco;
 	}
+	@Override
+	public String toString() {
+   		return this.nome + " (R$ " + this.preco + ")";
+	}
 }

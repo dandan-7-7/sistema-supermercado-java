@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class ArqCliente {
     private File arquivo = new File("Clientes.txt");
 
+    /* 
     public boolean salvar(Cliente c) {
         try {
             FileOutputStream fos = new FileOutputStream(arquivo, true);
@@ -28,6 +29,7 @@ public class ArqCliente {
             return false;
         }
     }
+    */
     public ArrayList<Cliente> listar() {
         ArrayList<Cliente> lista = new ArrayList<>();
 
@@ -49,5 +51,38 @@ public class ArqCliente {
         }
         return lista;
     }
+    public boolean salvar(Cliente c) {
+    try {
+        // MUDAR DE false PARA true AQUI:
+        FileOutputStream fos = new FileOutputStream(arquivo, true); 
+        
+        ObjectOutputStream oos;
+        if (arquivo.length() == 0)
+            oos = new ObjectOutputStream(fos);
+        else
+            oos = new AppendableObjectOutputStream(fos);
+
+        oos.writeObject(c);
+        oos.close();
+        return true;
+    } catch (IOException e) {
+        return false;
+    }
+}
+
+// Método 2: Para SALVAR TUDO (use no editar e remover)
+public void salvarTodaALista(ArrayList<Cliente> lista) {
+    try {
+        FileOutputStream fos = new FileOutputStream(arquivo, false); 
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+        for (Cliente c : lista) {
+            oos.writeObject(c);
+        }
+        oos.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     
 }

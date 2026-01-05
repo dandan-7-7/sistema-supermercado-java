@@ -49,4 +49,18 @@ public class ArqFuncionario {
         }
         return lista;
     }
+    public void salvarTodaALista(ArrayList<Funcionario> lista) {
+    try {
+        // false = apaga tudo e escreve a lista atualizada (para edições e remoções)
+        FileOutputStream fos = new FileOutputStream(arquivo, false); 
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+        for (Funcionario f : lista) {
+            oos.writeObject(f);
+        }
+        oos.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 }

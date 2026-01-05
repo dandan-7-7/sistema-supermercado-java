@@ -44,4 +44,18 @@ public class ArqProduto {
         }
         return lista;
     }
+    public void salvarTodaALista(ArrayList<Produto> lista) {
+    try {
+        // O 'false' aqui significa: apague o arquivo velho e crie um novo com essa lista
+        FileOutputStream fos = new FileOutputStream(arquivo, false); 
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+        for (Produto p : lista) {
+            oos.writeObject(p);
+        }
+        oos.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 }

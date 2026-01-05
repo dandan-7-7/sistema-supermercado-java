@@ -38,12 +38,15 @@ public class SupermercadoController {
     }
     public void removerProduto(Produto produto) {
         produtos.remove(produto);
+        arqProduto.salvarTodaALista(produtos);
     }
     public void removerCliente(Cliente cliente) {
         clientes.remove(cliente);
+        arqCliente.salvarTodaALista(clientes);
     }
     public void removerFuncionario(Funcionario funcionario) {
         funcionarios.remove(funcionario);
+        arqFuncionario.salvarTodaALista(funcionarios);
     }
     public boolean editarProduto(String nomeAntigo, String novoNome, int novaQuantidade, double novoPreco) {
     for (Produto p : produtos) {
@@ -51,6 +54,8 @@ public class SupermercadoController {
             p.setNome(novoNome);
             p.setQuantidade(novaQuantidade);
             p.setPreco(novoPreco);
+            arqProduto.salvarTodaALista(produtos);
+
             return true; 
             }
         }
@@ -61,6 +66,7 @@ public class SupermercadoController {
         if (c.getNome().equalsIgnoreCase(nomeAntigo)) {
             c.setNome(novoNome);
             c.setCpf(novoCPF);
+            arqCliente.salvarTodaALista(clientes);
             
             return true; 
             }
@@ -73,11 +79,15 @@ public class SupermercadoController {
         if (f.getNome().equalsIgnoreCase(nomeAntigo)) {
             f.setNome(novoNome);
             f.setCpf(novoCPF);
+            arqFuncionario.salvarTodaALista(funcionarios);
             
             return true; 
             }
         }
             return false; 
+    }
+    public void atualizarEstoque() {
+        arqProduto.salvarTodaALista(produtos);
     }
     
 }
