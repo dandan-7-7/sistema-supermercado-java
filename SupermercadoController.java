@@ -61,11 +61,12 @@ public class SupermercadoController {
         }
             return false; 
     }
-    public boolean editarCliente(String nomeAntigo, String novoNome, String novoCPF) {
+    public boolean editarCliente(String nomeAntigo, String novoNome, String novoCPF, String novaSenha) {
     for (Cliente c : clientes) {
         if (c.getNome().equalsIgnoreCase(nomeAntigo)) {
             c.setNome(novoNome);
             c.setCpf(novoCPF);
+            c.setSenha(novaSenha);
             arqCliente.salvarTodaALista(clientes);
             
             return true; 
