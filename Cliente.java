@@ -1,13 +1,13 @@
 public class Cliente extends Pessoa implements Autenticavel {
-    String senha;
+    private String senha;
+    public Cliente(String nome, String cpf, String senha){ 
+        super(nome, cpf, false);  
+        this.senha = senha;
+    }
     @Override
     public boolean autenticar(String senha) {
         
         return senha.equals(senha);
-    }
-    public Cliente(String nome, String cpf, String senha){ 
-        super(nome, cpf, false);  
-        this.senha = senha;
     }
    
     public String getNome() {
@@ -16,6 +16,7 @@ public class Cliente extends Pessoa implements Autenticavel {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    
 
     
 }
