@@ -4,8 +4,10 @@ public class Produto implements Serializable {
 	private String nome;
 	private int quantidade;
 	private double preco;
+	private String dataValidade;
+	private String Marca;
 	
-	public Produto(String nome,int quantidade, double preco){
+	public Produto(String nome,int quantidade, double preco, String dataValidade, String Marca) {
 		this.nome = nome;
 		if(quantidade < 0){
 			this.quantidade = 0;
@@ -14,6 +16,8 @@ public class Produto implements Serializable {
 			this.preco = 0.0;
 		} else
 		this.preco = preco;
+		this.dataValidade = dataValidade;
+		this.Marca = Marca;
 		
 	}
 	public void setNome(String nome) {
@@ -68,6 +72,10 @@ public class Produto implements Serializable {
 	}
 	@Override
 	public String toString() {
-   		return this.nome + " (R$ " + this.preco + ")";
+   		return this.nome + " (R$ " + this.preco + ") Qtde: " + this.quantidade;
+	}
+
+	public void setValidade(String dataValidade) { 
+		this.dataValidade= dataValidade;
 	}
 }

@@ -1,15 +1,13 @@
-
-
-public class Funcionario extends Pessoa implements Autenticavel {
-
-    public Funcionario(String nome, String cpf){ 
-        super(nome, cpf, true);   
+public class Funcionario extends Pessoa {
+    public Funcionario(String nome, String cpf, String senha) {
+        super(nome, cpf, senha);
+       
     }
     @Override
-    public boolean autenticar(String senha) {
-        return senha.equals("1234");
-    }
     public String getNome() {
         return "Funcionário: " + super.getNome();
+    }
+    public String getSenha() {
+        return senha;
     }
 }

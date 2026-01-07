@@ -3,15 +3,17 @@ import javax.swing.SwingUtilities;
 public class Main {
     public static void main(String[] args) {
 
-       
-        SupermercadoController supermercadoController = new SupermercadoController();
-         supermercadoController.cadastrarCliente(new Cliente("Maria", "1213231", "1234"));
-        System.out.println(supermercadoController.listarFuncionarios());
+        SupermercadoController controller = new SupermercadoController();
 
-        /*
+     
+        if (controller.listarFuncionarios().isEmpty()) {
+            controller.cadastrarFuncionario(
+                new Funcionario("Admin", "12345678900", "admin")
+            );
+        }
+
         SwingUtilities.invokeLater(() -> {
-            new TelaLogin().setVisible(true);
+            new TelaLogin(controller).setVisible(true);
         });
-        /* */
     }
 }

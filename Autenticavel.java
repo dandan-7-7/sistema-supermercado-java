@@ -1,3 +1,4 @@
 public interface Autenticavel {
-    public abstract boolean autenticar(String senha);
+    public abstract boolean autenticarClienteandFuncionario(boolean isFuncionario, String cpf, String senha);
+    
 }

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SupermercadoController {
+public class SupermercadoController implements Autenticavel {
     ArqProduto arqProduto = new ArqProduto();
     ArqCliente arqCliente = new ArqCliente();
     ArqFuncionario arqFuncionario = new ArqFuncionario();
@@ -23,7 +23,7 @@ public class SupermercadoController {
         clientes.add(cliente);
         arqCliente.salvar(cliente);
     }
-     public void cadastrarFucionario(Funcionario funcionario) {
+     public void cadastrarFuncionario(Funcionario funcionario) {
         funcionarios.add(funcionario);
         arqFuncionario.salvar(funcionario);
     }
@@ -90,5 +90,28 @@ public class SupermercadoController {
     public void atualizarEstoque() {
         arqProduto.salvarTodaALista(produtos);
     }
+    @Override
+    public boolean autenticarClienteandFuncionario(boolean isFuncionario, String cpf, String senha){
+
+        if(isFuncionario){
+            for (Funcionario f: funcionarios) {
+                if(f.getCpf().equals(cpf) && f.getSenha().equals(senha)){
+                    return true;
+                }
+            }
+            return false;
+        }
+        else{
+            for (Cliente c: clientes) {
+                if(c.getCpf().equals(cpf) && c.getSenha().equals(senha)){
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+    }
+
+    
     
 }

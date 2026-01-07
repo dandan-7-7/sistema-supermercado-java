@@ -31,7 +31,7 @@ public class TelaProduto extends JFrame {
         painelCampos.add(new JLabel("Preço:"));
         txtPreco = new JTextField();
         painelCampos.add(txtPreco);
-
+        
         JButton btnSalvar = new JButton("Salvar");
         painelCampos.add(btnSalvar);
 
@@ -53,7 +53,7 @@ public class TelaProduto extends JFrame {
             int qtd = Integer.parseInt(txtQtd.getText());
             double preco = Double.parseDouble(txtPreco.getText());
 
-            Produto p = new Produto(nome, qtd, preco);
+            Produto p = new Produto(nome, qtd, preco, "", "");
             controller.cadastrarProduto(p);
 
             model.addRow(new Object[]{nome, qtd, preco});

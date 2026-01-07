@@ -1,10 +1,10 @@
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class TelaVenda extends JFrame {
 
     public TelaVenda(SupermercadoController controller) {
-        setTitle("Venda");
+        setTitle("Realizar Venda");
         setSize(400, 200);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -19,6 +19,7 @@ public class TelaVenda extends JFrame {
         panel.add(cbProduto);
         panel.add(new JLabel("Quantidade"));
         panel.add(txtQtd);
+        panel.add(new JLabel(""));
         panel.add(btnComprar);
 
         btnComprar.addActionListener(e -> {
@@ -31,6 +32,7 @@ public class TelaVenda extends JFrame {
                 // ADICIONE ESSA LINHA PARA SALVAR NO ARQUIVO:
                 if (mensagem.contains("sucesso")) { // Só salva se a compra deu certo
                     controller.atualizarEstoque();
+                    cbProduto.repaint();
                 }
 
             } catch (NumberFormatException ex) {
